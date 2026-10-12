@@ -1,0 +1,380 @@
+
+/* ---------- General styles ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #f7f7f2;
+    --surface: #ffffff;
+    --text: #202820;
+    --muted: #737b73;
+    --accent: #315c43;
+    --accent-hover: #244632;
+    --border: #e2e6df;
+    --danger: #b43c3c;
+    --danger-hover: #922d2d;
+    --radius: 12px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ---------- Header ---------- */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px 8%;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+
+/* ---------- Main content ---------- */
+
+.main-content {
+    width: min(1200px, 84%);
+    margin: 48px auto;
+}
+
+.library-section {
+    width: 100%;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 1.6rem;
+}
+
+.section-description {
+    margin-top: 5px;
+    color: var(--muted);
+}
+
+
+/* ---------- Buttons ---------- */
+
+.primary-btn,
+.secondary-btn,
+.remove-btn,
+.read-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-weight: 600;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.primary-btn {
+    background-color: var(--accent);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.primary-btn:active,
+.secondary-btn:active,
+.remove-btn:active,
+.read-btn:active {
+    transform: scale(0.98);
+}
+
+.secondary-btn {
+    background-color: #eef0eb;
+    color: var(--text);
+}
+
+.secondary-btn:hover {
+    background-color: #e1e5dd;
+}
+
+
+/* ---------- Book grid ---------- */
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+
+/* ---------- Book cards ---------- */
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    padding: 24px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 3px 12px rgb(0 0 0 / 3%);
+    overflow-wrap: anywhere;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 7%);
+}
+
+.book-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.book-author {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.book-pages {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.book-status {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.book-status.read {
+    background-color: #e2f2e5;
+    color: #28663a;
+}
+
+.book-status.not-read {
+    background-color: #f7edda;
+    color: #865d17;
+}
+
+
+/* ---------- Card action buttons ---------- */
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.read-btn {
+    background-color: #e8eee8;
+    color: var(--accent);
+}
+
+.read-btn:hover {
+    background-color: #d9e5d9;
+}
+
+.remove-btn {
+    background-color: #f9e8e8;
+    color: var(--danger);
+}
+
+.remove-btn:hover {
+    background-color: #f3d5d5;
+    color: var(--danger-hover);
+}
+
+
+/* ---------- New-book dialog ---------- */
+
+.book-dialog {
+    width: min(460px, calc(100% - 32px));
+    max-height: 90vh;
+    margin: auto;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background-color: var(--surface);
+    color: var(--text);
+    overflow-y: auto;
+}
+
+.book-dialog::backdrop {
+    background-color: rgb(20 30 22 / 55%);
+    backdrop-filter: blur(3px);
+}
+
+.dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.dialog-header h2 {
+    font-size: 1.4rem;
+}
+
+.dialog-header p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.close-btn {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    background-color: #eef0eb;
+    color: var(--text);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background-color: #e1e5dd;
+}
+
+
+/* ---------- Form fields ---------- */
+
+#book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--text);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgb(49 92 67 / 12%);
+}
+
+.form-group input::placeholder {
+    color: #a0a69f;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+
+/* ---------- Keyboard accessibility ---------- */
+
+button:focus-visible {
+    outline: 3px solid #7ba889;
+    outline-offset: 3px;
+}
+
+
+/* ---------- Responsive layout ---------- */
+
+@media (max-width: 600px) {
+    .header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 24px 6%;
+    }
+
+    .header h1 {
+        font-size: 1.7rem;
+    }
+
+    .main-content {
+        width: 88%;
+        margin: 32px auto;
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-dialog {
+        padding: 22px;
+    }
+}
